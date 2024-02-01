@@ -1,2 +1,6 @@
-const username = process.argv[2].substring(11);
-console.log(`Welcome to the File Manager, ${username}!`);
+import os from 'os';
+import { getWelcome } from './app/welcome.js';
+
+process.chdir(os.homedir());
+getWelcome();
+console.log(`You are currently in ${process.cwd()}\n`);
