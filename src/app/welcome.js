@@ -12,8 +12,9 @@ const getWelcome = () => {
     console.log(`Welcome to the File Manager, ${username}!`);
   } else {
     console.error(
-      'Invalid command to log in \nPlease enter from the example \nnpm run start -- --username=your_username'
+      'Invalid command to log in \nPlease enter from the example: \n\nnpm run start -- --username=your_username\n'
     );
+    process.exit();
   }
 };
 export { getWelcome, username };
