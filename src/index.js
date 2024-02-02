@@ -27,6 +27,8 @@ rl.on('line', async (command) => {
     case 'ls':
       getlist(dirctory);
       break;
+    default:
+      console.log('Invalid input.\n');
   }
 });
 rl.on('close', () => exit());
