@@ -6,6 +6,7 @@ import { getlist } from './app/list.js';
 import { getUp } from './app/up.js';
 import { getCd } from './app/cd.js';
 import { getOsInfo } from './app/os.js';
+import { getHash } from './app/hasch.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -46,6 +47,13 @@ rl.on('line', async (command) => {
         console.log('Invalid input.\n');
       }
       break;
+    case 'hash':
+      if (args.length === 2) {
+        await getHash(args[1]);
+      } else {
+        console.log('Invalid input.\n');
+      }
+      break;
     default:
       console.log('Invalid input.\n');
   }
@@ -53,6 +61,6 @@ rl.on('line', async (command) => {
 rl.on('close', () => exit());
 
 function exit() {
-  console.log(`Thank you for using File Manager, ${username}, goodbye!`);
+  console.log(`Thank you for using File Manager, ${username}, goodbye!\n`);
   process.exit();
 }
