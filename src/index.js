@@ -7,6 +7,7 @@ import { getUp } from './app/up.js';
 import { getCd } from './app/cd.js';
 import { getOsInfo } from './app/os.js';
 import { getHash } from './app/hasch.js';
+import { getCat } from './app/cat.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -36,6 +37,13 @@ rl.on('line', async (command) => {
     case 'ls':
       if (args.length === 1) {
         await getlist(dirctory);
+      } else {
+        console.log('Invalid input.\n');
+      }
+      break;
+    case 'cat':
+      if (args.length === 2) {
+        await getCat(args[1]);
       } else {
         console.log('Invalid input.\n');
       }
