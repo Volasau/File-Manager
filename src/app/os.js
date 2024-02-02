@@ -23,6 +23,11 @@ const getOsInfo = async (command) => {
         console.log(`${homeDirectory}`);
         getDirectory();
         break;
+      case '--username':
+        const username = os.userInfo().username;
+        console.log(`${username}`);
+        getDirectory();
+        break;
       default:
         console.log('Invalid input.\n');
     }
