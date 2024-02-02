@@ -5,7 +5,7 @@ const getOsInfo = async (command) => {
   try {
     switch (command) {
       case '--EOL':
-        console.log(JSON.stringify(os.EOL));
+        console.log(`Default system EOL: ${JSON.stringify(os.EOL)}\n`);
         getDirectory();
         break;
       case '--cpus':
@@ -20,12 +20,17 @@ const getOsInfo = async (command) => {
         break;
       case '--homedir':
         const homeDirectory = os.homedir();
-        console.log(`${homeDirectory}`);
+        console.log(`Home directory: ${homeDirectory}\n`);
         getDirectory();
         break;
       case '--username':
         const username = os.userInfo().username;
-        console.log(`${username}`);
+        console.log(`System User name: ${username}\n`);
+        getDirectory();
+        break;
+      case '--architecture':
+        const architecture = os.arch();
+        console.log(`CPU architecture:  ${architecture}\n`);
         getDirectory();
         break;
       default:
