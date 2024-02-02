@@ -4,6 +4,7 @@ import { getWelcome, username } from './app/welcome.js';
 import { getDirectory } from './app/directory.js';
 import { getlist } from './app/list.js';
 import { getUp } from './app/up.js';
+import { getCd } from './app/cd.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -16,7 +17,9 @@ const rl = readline.createInterface({
 });
 
 rl.on('line', async (command) => {
-  switch (command) {
+  const args = command.split(' ');
+
+  switch (args[0]) {
     case '.exit':
       exit();
       break;
@@ -24,8 +27,16 @@ rl.on('line', async (command) => {
       getUp();
       dirctory = process.cwd();
       break;
+    case 'cd':
+      getCd(args[1]);
+      dirctory = process.cwd();
+      break;
     case 'ls':
-      getlist(dirctory);
+      if (args.length === 1) {
+        await getlist(dirctory);
+      } else {
+        console.log('Invalid input.\n');
+      }
       break;
     default:
       console.log('Invalid input.\n');
