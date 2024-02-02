@@ -5,6 +5,7 @@ import { getDirectory } from './app/directory.js';
 import { getlist } from './app/list.js';
 import { getUp } from './app/up.js';
 import { getCd } from './app/cd.js';
+import { getOsInfo } from './app/os.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -37,6 +38,9 @@ rl.on('line', async (command) => {
       } else {
         console.log('Invalid input.\n');
       }
+      break;
+    case 'os':
+      getOsInfo(args[1]);
       break;
     default:
       console.log('Invalid input.\n');
