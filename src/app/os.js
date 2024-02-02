@@ -18,6 +18,11 @@ const getOsInfo = async (command) => {
         });
         getDirectory();
         break;
+      case '--homedir':
+        const homeDirectory = os.homedir();
+        console.log(`${homeDirectory}`);
+        getDirectory();
+        break;
       default:
         console.log('Invalid input.\n');
     }
