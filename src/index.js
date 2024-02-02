@@ -40,7 +40,11 @@ rl.on('line', async (command) => {
       }
       break;
     case 'os':
-      getOsInfo(args[1]);
+      if (args.length === 2) {
+        await getOsInfo(args[1]);
+      } else {
+        console.log('Invalid input.\n');
+      }
       break;
     default:
       console.log('Invalid input.\n');

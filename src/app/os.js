@@ -8,7 +8,16 @@ const getOsInfo = async (command) => {
         console.log(JSON.stringify(os.EOL));
         getDirectory();
         break;
-
+      case '--cpus':
+        const cpus = os.cpus();
+        console.log(`Overall amount of CPUS: ${cpus.length}`);
+        cpus.forEach((el, index) => {
+          console.log(
+            `CPU ${index + 1}: Model - ${el.model} - (${el.speed} GHz)`
+          );
+        });
+        getDirectory();
+        break;
       default:
         console.log('Invalid input.\n');
     }
