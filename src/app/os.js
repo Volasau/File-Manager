@@ -11,11 +11,13 @@ const getOsInfo = async (command) => {
       case '--cpus':
         const cpus = os.cpus();
         console.log(`Overall amount of CPUS: ${cpus.length}`);
-        cpus.forEach((el, index) => {
-          console.log(
-            `CPU ${index + 1}: Model - ${el.model} - (${el.speed} GHz)`
-          );
-        });
+        console.table(
+          cpus.map((item) => ({
+            Model: item.model,
+            'Clock rate (in GHz)': (item.speed / 1000).toFixed(2),
+          }))
+        );
+
         getDirectory();
         break;
       case '--homedir':
