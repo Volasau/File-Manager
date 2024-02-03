@@ -13,6 +13,7 @@ import { getRename } from './app/rn.js';
 import { getRemove } from './app/rm.js';
 import { getCopy } from './app/cp.js';
 import { getMove } from './app/mv.js';
+import { getCompress } from './app/compress.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -25,7 +26,9 @@ const rl = readline.createInterface({
 });
 
 rl.on('line', async (command) => {
+  console.log(command);
   const args = command.split(' ');
+  console.log(args);
 
   switch (args[0]) {
     case '.exit':
@@ -105,6 +108,14 @@ rl.on('line', async (command) => {
     case 'hash':
       if (args.length === 2) {
         await getHash(args[1]);
+      } else {
+        console.log('Invalid input.\n');
+      }
+      break;
+
+    case 'compress':
+      if (args.length === 3) {
+        await getCompress(args[1], args[2]);
       } else {
         console.log('Invalid input.\n');
       }

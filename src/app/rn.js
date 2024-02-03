@@ -9,7 +9,7 @@ const getRename = async (pathToFile, newFileName) => {
     const pathFromFile = path.resolve(directory, newFileName);
     await fs.rename(file, pathFromFile);
     getDirectory();
-  } catch (err) {
+  } catch (error) {
     console.log('Operation failed');
   }
 };
