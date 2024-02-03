@@ -31,14 +31,17 @@ rl.on('line', async (command) => {
     case '.exit':
       exit();
       break;
+
     case 'up':
       getUp();
       dirctory = process.cwd();
       break;
+
     case 'cd':
       getCd(args[1]);
       dirctory = process.cwd();
       break;
+
     case 'ls':
       if (args.length === 1) {
         await getlist(dirctory);
@@ -46,12 +49,15 @@ rl.on('line', async (command) => {
         console.log('Invalid input.\n');
       }
       break;
+
     case 'cat':
       if (args.length === 2) {
         await getCat(args[1]);
       } else {
         console.log('Invalid input.\n');
       }
+      break;
+
     case 'add':
       if (args.length === 2) {
         await addFile(args[1]);
@@ -59,6 +65,7 @@ rl.on('line', async (command) => {
         console.log('Invalid input.\n');
       }
       break;
+
     case 'rn':
       if (args.length === 3) {
         await getRename(args[1], args[2]);
@@ -66,6 +73,7 @@ rl.on('line', async (command) => {
         console.log('Invalid input.\n');
       }
       break;
+
     case 'cp':
       if (args.length === 3) {
         await getCopy(args[1], args[2]);
@@ -73,6 +81,7 @@ rl.on('line', async (command) => {
         console.log('Invalid input.\n');
       }
       break;
+
     case 'mv':
       if (args.length === 3) {
         await getMove(args[1], args[2]);
@@ -80,9 +89,11 @@ rl.on('line', async (command) => {
         console.log('Invalid input.\n');
       }
       break;
+
     case 'rm':
       getRemove(args[1]);
       break;
+
     case 'os':
       if (args.length === 2) {
         await getOsInfo(args[1]);
@@ -90,6 +101,7 @@ rl.on('line', async (command) => {
         console.log('Invalid input.\n');
       }
       break;
+
     case 'hash':
       if (args.length === 2) {
         await getHash(args[1]);
@@ -97,6 +109,7 @@ rl.on('line', async (command) => {
         console.log('Invalid input.\n');
       }
       break;
+
     default:
       console.log('Invalid input.\n');
   }
