@@ -12,6 +12,7 @@ import { addFile } from './app/add.js';
 import { getRename } from './app/rn.js';
 import { getRemove } from './app/rm.js';
 import { getCopy } from './app/cp.js';
+import { getMove } from './app/mv.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -68,6 +69,13 @@ rl.on('line', async (command) => {
     case 'cp':
       if (args.length === 3) {
         await getCopy(args[1], args[2]);
+      } else {
+        console.log('Invalid input.\n');
+      }
+      break;
+    case 'mv':
+      if (args.length === 3) {
+        await getMove(args[1], args[2]);
       } else {
         console.log('Invalid input.\n');
       }
