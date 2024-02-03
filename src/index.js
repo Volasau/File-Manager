@@ -10,6 +10,7 @@ import { getHash } from './app/hasch.js';
 import { getCat } from './app/cat.js';
 import { addFile } from './app/add.js';
 import { getRename } from './app/rn.js';
+import { getRemove } from './app/rm.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -62,6 +63,9 @@ rl.on('line', async (command) => {
       } else {
         console.log('Invalid input.\n');
       }
+      break;
+    case 'rm':
+      getRemove(args[1]);
       break;
     case 'os':
       if (args.length === 2) {
