@@ -2,13 +2,15 @@ import fs from 'fs/promises';
 import path from 'path';
 import { getDirectory } from './directory.js';
 
-const getRename = async (pathToFile, newName) => {
+const getRename = async (pathToFile, newFileName) => {
   try {
-    const oldFile = path.resolve(pathToFile);
-    await fs.rename(oldFile, newName);
+    const file = path.resolve(pathToFile);
+    const directory = path.dirname(file);
+    const pathFromFile = path.resolve(directory, newFileName);
+    await fs.rename(file, pathFromFile);
     getDirectory();
-  } catch (error) {
-    console.error('Operation failed');
+  } catch (err) {
+    console.log('Operation failed');
   }
 };
 
