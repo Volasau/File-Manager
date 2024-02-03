@@ -11,6 +11,7 @@ import { getCat } from './app/cat.js';
 import { addFile } from './app/add.js';
 import { getRename } from './app/rn.js';
 import { getRemove } from './app/rm.js';
+import { getCopy } from './app/cp.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -60,6 +61,13 @@ rl.on('line', async (command) => {
     case 'rn':
       if (args.length === 3) {
         await getRename(args[1], args[2]);
+      } else {
+        console.log('Invalid input.\n');
+      }
+      break;
+    case 'cp':
+      if (args.length === 3) {
+        await getCopy(args[1], args[2]);
       } else {
         console.log('Invalid input.\n');
       }
