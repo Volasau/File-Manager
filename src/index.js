@@ -14,6 +14,7 @@ import { getRemove } from './app/rm.js';
 import { getCopy } from './app/cp.js';
 import { getMove } from './app/mv.js';
 import { getCompress } from './app/compress.js';
+import { getDecompress } from './app/decompress.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -116,6 +117,14 @@ rl.on('line', async (command) => {
     case 'compress':
       if (args.length === 3) {
         await getCompress(args[1], args[2]);
+      } else {
+        console.log('Invalid input.\n');
+      }
+      break;
+
+    case 'decompress':
+      if (args.length === 3) {
+        await getDecompress(args[1], args[2]);
       } else {
         console.log('Invalid input.\n');
       }
