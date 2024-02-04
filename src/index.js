@@ -15,6 +15,7 @@ import { getCopy } from './app/cp.js';
 import { getMove } from './app/mv.js';
 import { getCompress } from './app/compress.js';
 import { getDecompress } from './app/decompress.js';
+import { parseCommand } from './app/parseCommand.js';
 
 process.chdir(os.homedir());
 getWelcome();
@@ -27,9 +28,9 @@ const rl = readline.createInterface({
 });
 
 rl.on('line', async (command) => {
-  console.log(command);
-  const args = command.split(' ');
-  console.log(args);
+  const strInput = command.trim();
+
+  const args = parseCommand(strInput);
 
   switch (args[0]) {
     case '.exit':
@@ -50,7 +51,7 @@ rl.on('line', async (command) => {
       if (args.length === 1) {
         await getlist(dirctory);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -58,7 +59,7 @@ rl.on('line', async (command) => {
       if (args.length === 2) {
         await getCat(args[1]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -66,7 +67,7 @@ rl.on('line', async (command) => {
       if (args.length === 2) {
         await addFile(args[1]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -74,7 +75,7 @@ rl.on('line', async (command) => {
       if (args.length === 3) {
         await getRename(args[1], args[2]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -82,7 +83,7 @@ rl.on('line', async (command) => {
       if (args.length === 3) {
         await getCopy(args[1], args[2]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -90,7 +91,7 @@ rl.on('line', async (command) => {
       if (args.length === 3) {
         await getMove(args[1], args[2]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -102,7 +103,7 @@ rl.on('line', async (command) => {
       if (args.length === 2) {
         await getOsInfo(args[1]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -110,7 +111,7 @@ rl.on('line', async (command) => {
       if (args.length === 2) {
         await getHash(args[1]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -118,7 +119,7 @@ rl.on('line', async (command) => {
       if (args.length === 3) {
         await getCompress(args[1], args[2]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
@@ -126,12 +127,12 @@ rl.on('line', async (command) => {
       if (args.length === 3) {
         await getDecompress(args[1], args[2]);
       } else {
-        console.log('Invalid input.\n');
+        getErrorMessange();
       }
       break;
 
     default:
-      console.log('Invalid input.\n');
+      getErrorMessange();
   }
 });
 rl.on('close', () => exit());
@@ -139,4 +140,8 @@ rl.on('close', () => exit());
 function exit() {
   console.log(`Thank you for using File Manager, ${username}, goodbye!\n`);
   process.exit();
+}
+
+function getErrorMessange() {
+  console.error('Invalid input.\n');
 }
