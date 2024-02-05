@@ -25,7 +25,9 @@ _Example of a path containing a space in the folder name to a file **text.txt** 
 Input example:
 
 `cat "c:\users\username\folder name\text.txt"`
+
 or
+
 `mv "c:\users\username\folder name\text.txt" c:\users\username\`
 
 **Enclose in double quotes only the path where there is a space in the name**
