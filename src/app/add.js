@@ -3,8 +3,7 @@ import { getDirectory } from './directory.js';
 
 const addFile = async (nameFile) => {
   try {
-    const fileHandle = await fs.open(nameFile, 'w');
-    await fileHandle.close();
+    await fs.writeFile(nameFile, '');
 
     getDirectory();
   } catch (error) {
