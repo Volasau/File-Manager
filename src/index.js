@@ -6,7 +6,7 @@ import { getlist } from './app/list.js';
 import { getUp } from './app/up.js';
 import { getCd } from './app/cd.js';
 import { getOsInfo } from './app/os.js';
-import { getHash } from './app/hasch.js';
+import { getHash } from './app/hash.js';
 import { getCat } from './app/cat.js';
 import { addFile } from './app/add.js';
 import { getRename } from './app/rn.js';
