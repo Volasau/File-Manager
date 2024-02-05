@@ -34,17 +34,35 @@ rl.on('line', async (command) => {
 
   switch (args[0]) {
     case '.exit':
-      exit();
+      if (args.length === 1) {
+        exit();
+      } else {
+        getErrorMessange();
+        console.error('Command .exit does not accept arguments\n');
+        getDirectory();
+      }
       break;
 
     case 'up':
-      getUp();
-      dirctory = process.cwd();
+      if (args.length === 1) {
+        await getUp();
+        dirctory = process.cwd();
+      } else {
+        getErrorMessange();
+        console.error('Command up does not accept arguments\n');
+        getDirectory();
+      }
       break;
 
     case 'cd':
-      getCd(args[1]);
-      dirctory = process.cwd();
+      if (args.length === 2) {
+        await getCd(args[1]);
+        dirctory = process.cwd();
+      } else {
+        getErrorMessange();
+        console.error('Command cd takes one argument\n');
+        getDirectory();
+      }
       break;
 
     case 'ls':
@@ -52,6 +70,8 @@ rl.on('line', async (command) => {
         await getlist(dirctory);
       } else {
         getErrorMessange();
+        console.error('Command ls does not accept arguments\n');
+        getDirectory();
       }
       break;
 
@@ -60,6 +80,8 @@ rl.on('line', async (command) => {
         await getCat(args[1]);
       } else {
         getErrorMessange();
+        console.error('Command cat takes one argument\n');
+        getDirectory();
       }
       break;
 
@@ -68,6 +90,8 @@ rl.on('line', async (command) => {
         await addFile(args[1]);
       } else {
         getErrorMessange();
+        console.error('Command add takes one argument\n');
+        getDirectory();
       }
       break;
 
@@ -76,6 +100,8 @@ rl.on('line', async (command) => {
         await getRename(args[1], args[2]);
       } else {
         getErrorMessange();
+        console.error('Command rn takes two argument\n');
+        getDirectory();
       }
       break;
 
@@ -84,6 +110,8 @@ rl.on('line', async (command) => {
         await getCopy(args[1], args[2]);
       } else {
         getErrorMessange();
+        console.error('Command cp takes two argument\n');
+        getDirectory();
       }
       break;
 
@@ -92,11 +120,19 @@ rl.on('line', async (command) => {
         await getMove(args[1], args[2]);
       } else {
         getErrorMessange();
+        console.error('Command mv takes two argument\n');
+        getDirectory();
       }
       break;
 
     case 'rm':
-      getRemove(args[1]);
+      if (args.length === 2) {
+        getRemove(args[1]);
+      } else {
+        getErrorMessange();
+        console.error('Command rm takes one argument\n');
+        getDirectory();
+      }
       break;
 
     case 'os':
@@ -104,6 +140,8 @@ rl.on('line', async (command) => {
         await getOsInfo(args[1]);
       } else {
         getErrorMessange();
+        console.error('Command os takes one argument\n');
+        getDirectory();
       }
       break;
 
@@ -112,6 +150,8 @@ rl.on('line', async (command) => {
         await getHash(args[1]);
       } else {
         getErrorMessange();
+        console.error('Command hash takes one argument\n');
+        getDirectory();
       }
       break;
 
@@ -120,6 +160,8 @@ rl.on('line', async (command) => {
         await getCompress(args[1], args[2]);
       } else {
         getErrorMessange();
+        console.error('Command compress takes two argument\n');
+        getDirectory();
       }
       break;
 
@@ -128,11 +170,14 @@ rl.on('line', async (command) => {
         await getDecompress(args[1], args[2]);
       } else {
         getErrorMessange();
+        console.error('Command decompress takes two argument\n');
+        getDirectory();
       }
       break;
 
     default:
-      getErrorMessange();
+      console.error('Invalid input.\n');
+      getDirectory();
   }
 });
 rl.on('close', () => exit());
@@ -144,4 +189,5 @@ function exit() {
 
 function getErrorMessange() {
   console.error('Invalid input.\n');
+  // console.error('Operation failed\n');
 }

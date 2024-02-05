@@ -18,12 +18,14 @@ const getCat = async (tofile) => {
       });
 
       readFile.on('error', (error) => {
-        console.error('Operation failed');
+        console.error('Operation failed\n');
         reject();
       });
     });
     getDirectory();
-  } catch (error) {}
+  } catch (error) {
+    getDirectory();
+  }
 };
 
 export { getCat };

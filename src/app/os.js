@@ -36,10 +36,12 @@ const getOsInfo = async (command) => {
         getDirectory();
         break;
       default:
-        console.log('Invalid input.\n');
+        console.log('Operation failed\n');
+        getDirectory();
     }
   } catch (error) {
-    console.log('Operation failed');
+    console.log('Operation failed\n');
+    getDirectory();
   }
 };
 export { getOsInfo };

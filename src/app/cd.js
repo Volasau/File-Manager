@@ -5,7 +5,8 @@ const getCd = async (pathDirectory) => {
     process.chdir(pathDirectory);
     getDirectory();
   } catch (error) {
-    console.error('Operation failed');
+    console.error('Operation failed\n');
+    getDirectory();
   }
 };
 

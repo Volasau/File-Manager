@@ -16,7 +16,8 @@ const getCopy = async (pathToFile, newPathToFile) => {
     );
     getDirectory();
   } catch (error) {
-    console.error('Operation failed');
+    console.error('Operation failed\n');
+    getDirectory();
   }
 };
 

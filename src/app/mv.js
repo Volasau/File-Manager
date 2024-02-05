@@ -18,7 +18,8 @@ const getMove = async (pathToFile, newPathToFile) => {
     await unlink(absoluteOldPath);
     getDirectory();
   } catch (error) {
-    console.error('Operation failed');
+    console.error('Operation failed\n');
+    getDirectory();
   }
 };
 

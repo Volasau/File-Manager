@@ -10,7 +10,8 @@ const getRename = async (pathToFile, newFileName) => {
     await fs.rename(file, pathFromFile);
     getDirectory();
   } catch (error) {
-    console.log('Operation failed');
+    console.log('Operation failed\n');
+    getDirectory();
   }
 };
 

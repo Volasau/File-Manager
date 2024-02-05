@@ -20,7 +20,8 @@ const getHash = async (tofile) => {
       });
 
       readFile.on('error', (error) => {
-        console.error('Operation failed');
+        console.error('Operation failed\n');
+        getDirectory();
         reject();
       });
     });
