@@ -54,6 +54,8 @@ or
 
 `add new_file_name`
 
+_The name cannot contain characters :_ **/ \ : \* ? < > |**
+
 - Rename file
 
 `rn path_to_file new_filename`
